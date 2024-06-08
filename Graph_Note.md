@@ -88,7 +88,7 @@ In c++  we write in the following ways:
 ## 2.2 Searching Method of the Graph
 Searching method in graph include depth-first search and breadth-first search, there two ways provides approaches from a given starting vertex to a target destination, here we specified $s$ and $t$ as the label of these starting and target vertices.
 
-### Depth-first Search 深度优先搜索
+### 2.2.1 Depth-first Search 深度优先搜索
 This searching method is searching along with paths one by one, from the parent node digging to one particular children node and then children's children. Hence could write a recursion by repeating the same procession for every children digging out the node matches the target.
 ```python
 # DFS - Depth First Search
@@ -130,7 +130,7 @@ class Graph:
                 self.dfs_recur(index, t, display)
 ```
 
-### Breadth-first Search
+### 2.2.2 Breadth-first Search 广度优先搜索
 This method search goes along with every node in the adjacency set but not in the visited set, defined as the children set, then go along with all children sets of these children nodes. A simple approach is to build a queue to store and establish the order of nodes:
 
 Queue is a data structure where connects all nodes by a next relationship, for every new node added, would add such node at the tail of the queue, while remove nodes from the head. Queue is a specific case of linkedlist, you could definitely design other linkedlisk like stack (storing from head and removing from head), but in this case by using queue we could go through nodes until approaches target. 
@@ -196,14 +196,14 @@ class Graph:
         return
 ``` 
 
-### Dijkstra Method
+### 2.2.3 Dijkstra Method
 The time complexity is $n^{2}$, is to find the shortest path from the starting node to every other nodes in a weighted undirected graph. To approach this we set up a set as *unvisited_lst*, include the whole vertices initially and set up a value names the *curr_smallNode* for the current node with the smallest distance to. For nodes not connected by any weighted edges, we say the distance to be infinity and for those connected we say distance to be the weights sum, stored in the distance_map.
 
 For initial setting, we set the *curr_smallNode* to be s for the distance from the start node s to s is naturally 0, while all other vertices are infinite in distance, then repeat the following steps:
  
-- 1. Finding the next curr_smallNode by $c_{k+1} = argmin_{x \in S_{k}} Dist_{k}(x)$, for intial step $c_{0} = s$. 
-- 2. Remove the curr_smallNode from the set $S_{k+1} = S_{k} \ c_{k+1}$.
-- 3. Caculate the distance of all other nodes $i \in S_{k}$ to the curr_smallNode c_{k}, $Dist_{k+1}[i] = w_{c_{k}i}$.
+1. Finding the next curr_smallNode by $c_{k+1} = argmin_{x \in S_{k}} Dist_{k}(x)$, for intial step $c_{0} = s$. 
+2. Remove the curr_smallNode from the set $S_{k+1} = S_{k} / c_{k+1}$.
+3. Caculate the distance of all other nodes $i \in S_{k}$ to the curr_smallNode $c_{k}$, $Dist_{k+1}[i] = w_{c_{k}i}$.
 
 Notes that Dijkstra could be mathmatically shown that is an approach finding the minumum path towards each other nodes in an undirected weighted graph.
 ```python
