@@ -203,7 +203,7 @@ For initial setting, we set the *curr_smallNode* to be s for the distance from t
  
 1. Finding the next curr_smallNode by $c_{k+1} = argmin_{x \in S_{k}} Dist_{k}(x)$, for intial step $c_{0} = s$. 
 2. Remove the curr_smallNode from the set $S_{k+1} = S_{k} / c_{k+1}$.
-3. Caculate the distance of all other nodes $i \in S_{k}$ to the curr_smallNode $c_{k}$, $Dist_{k+1}[i] = w_{c_{k}i}$.
+3. Update the distance of all other nodes $i \in S_{k}$ as $Dist_{k+1}[i] = w_{c_{k+1}i} + Dist_{c_{k+1}}[i]$ if $Dist_{k}[i] > w_{c_{k+1}i} + Dist_{c_{k+1}}[i]$.
 
 Notes that Dijkstra could be mathmatically shown that is an approach finding the minumum path towards each other nodes in an undirected weighted graph.
 ```python
